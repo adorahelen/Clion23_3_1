@@ -4,11 +4,9 @@
 #define ___InStack
 
 typedef struct {
-
     int max; // 스택 용량
     int ptr; // 스택 포인터
     int *stk // 스택의 첫 요소에 대한 포인터
-
 } IntStack; // 스택이름
 
 int Initialize (IntStack *s, int max); // 스택 초기화
@@ -35,6 +33,9 @@ void Print (const IntStack *s); // 모든 데이터 츨력
 
 void Terminate (IntStack *s);
 #endif
+
+
+
 
 
 
