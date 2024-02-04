@@ -2,9 +2,9 @@
 
 #include <stdio.h>
 #include <stdlib.h>
-#include "../../Queue.h"
+#include "Queue.h"
 
-int Initialize (IntQueue *q, int max)
+int Initial (IntQueue *q, int max)
 {
     q->num = q->front = q->rear = 0; // 준비 작업을 위해 전부 0으로 초기화
     if ((q->que = calloc(max, sizeof(int))) == NULL) {
@@ -16,7 +16,7 @@ int Initialize (IntQueue *q, int max)
     return 0;
 }
 
-int Enque (IntQueue *q, int x) {
+int inQue (IntQueue *q, int x) {
     if (q->num >= q->max)
         return -1; // 큐가 가득 참
 
@@ -29,7 +29,7 @@ int Enque (IntQueue *q, int x) {
     } // 인큐할 데이터를 저장하고, rear와 num 값을 1만큼 증가하면 인큐 작업이 끝난다.
 }
 
-int Deque (IntQueue *q, int *x)
+int outQue (IntQueue *q, int *x)
 {
     if (q->num <=0)
         return -1;
@@ -60,7 +60,7 @@ int Deque (IntQueue *q, int *x)
   }
 
 
-int Capacitiy (const IntQueue *q)
+int Capacity (const IntQueue *q)
 {
     return q-> max;
 }
