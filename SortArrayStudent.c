@@ -61,4 +61,5 @@ int main(void)
 
     return 0;
     // main 끝
+    // + 함수추가해야함
 }
