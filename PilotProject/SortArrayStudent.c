@@ -3,22 +3,11 @@
 // Did you know? In SoGangUni, Can go Kanegi melon Uni!
 
 #include <stdio.h>
-#include <stralign.h>
+#include <string.h>
 #include <stdbool.h>
 #include "Header.h"
 
 #define NUM_STU 5
-
-// Global Type
-    typedef struct
-    {
-    char name[26];
-    int midterm[3];
-    int final;
-    } STUDENT; // 구조체 설정
-
-// Function
-void InserSort (STUDENT list[], int last); // 구조체 배열을 사용할 것
 
 int main(void)
 {
