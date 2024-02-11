@@ -5,16 +5,17 @@
 #include <stdio.h>
 #include <stralign.h>
 #include <stdbool.h>
+#include "Header.h"
 
 #define NUM_STU 5
 
 // Global Type
-typedef struct
-{
+    typedef struct
+    {
     char name[26];
     int midterm[3];
     int final;
-} STUDENT; // 구조체 설정
+    } STUDENT; // 구조체 설정
 
 // Function
 void InserSort (STUDENT list[], int last); // 구조체 배열을 사용할 것
@@ -33,8 +34,8 @@ int main(void)
 
     printf("Unsorted Data List: \n");
     for (STUDENT* pStuptr = stuAry;
-         pStuptr < stuAry + NUM_STU; // 더하는거 배열의 개수 처음에 define한
-         pStuptr++) {
+        pStuptr < stuAry + NUM_STU; // 더하는거 배열의 개수 처음에 define한
+        pStuptr++) {
 
         printf("%-26s %4d %4d %4d %4d \n",
                pStuptr->name,
@@ -61,5 +62,5 @@ int main(void)
 
     return 0;
     // main 끝
-    // + 함수추가해야함
 }
+
