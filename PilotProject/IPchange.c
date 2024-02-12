@@ -1,7 +1,3 @@
-//
-// Created by adora on 2024-02-09.
-// 819 Elevator, 802 fundamental
-
 // Convert IP Address to long
 #include <stdio.h>
 #include <string.h>
