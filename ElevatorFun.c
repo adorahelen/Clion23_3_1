@@ -69,10 +69,62 @@ void runElevator (ELEVATOR* elev){
     } // while
     return;
 } // end of func : runEleve
-void terminate (ELEVATOR* elev);
-void move (ELEVATOR* elev);
+
+void move (ELEVATOR* elev) {
+    static DIRECTION_STATUS direction = STOP;
+    // Local Dec
+    bool anyUp;
+    bool anyDown;
+    // Statements
+    anyUp = anyUpRequest(elev);
+    anyDown = anyDownRequest(elev);
+
+    if (direction == UP)
+    {
+        if (!anyUp && anyDown)
+            direction = DOWN;
+        else
+            if (!anyUp && anyDown)
+                direction = STOP;
+    } // 올라감
+
+    else if (direction == DOWN)
+    {
+        if (!anyDown && anyUp)
+            direction = UP;
+        else
+            if (!anyDown && !anyUp)
+                direction = STOP;
+    } // 내려감
+
+    else if (direction == STOP)
+    {
+        if (anyUp)
+            direction = UP;
+        else
+            if (anyDown)
+                direction = DOWN;
+    } // 위, 아래, 멈춤 버튼
+
+    if (direction == UP)
+        moveUp(elev);
+    else
+        if (direction == DOWN)
+            moveDown(elev);
+        else
+            printf("\n**** NO BUTTON PRESSED **** ");
+    return;
+    // move method
+
+
+
+}
 void anyUpRequest (ELEVATOR* elev);
 void anyDownRequest (ELEVATOR* elev);
-void moveUp (ELEVATOR* elev);
+void moveUp (ELEVATOR* elev)
+{
+
+}
 void moveDown (ELEVATOR* elev);
 void timePass (int m);
+void terminate (ELEVATOR* elev);
