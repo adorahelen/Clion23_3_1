@@ -119,12 +119,70 @@ void move (ELEVATOR* elev) {
 
 
 }
-void anyUpRequest (ELEVATOR* elev);
-void anyDownRequest (ELEVATOR* elev);
+
 void moveUp (ELEVATOR* elev)
 {
+// statements
+    printf("\n The door is being closed ...");
+    printf("\n We are going up.");
+    (elev->currentFloor)++;
+    while (elev->buttons[elev->currentFloor] != IN)
+    {
+        printf("\n");
+        timePass(2);
+        printf("\n Passing floor %d", elev->currentFloor);
+        printf("\n");
+        timePass(2);
+        (elev->currentFloor)++;
+    } // while
 
+    elev->buttons[elev->currentFloor] = OUT;
+    printf("\nThe door is being opened...");
+    printf("\n");
+    printf("\n **** FLOOR %d ****",
+           elev->currentFloor);
+    printf("\n");
+    timePass(4);
+    return;
+} // moveUp
+
+void moveDown (ELEVATOR* elev){
+    printf("\nThe door is being closed ...");
+    printf("\nWe are going down");
+    (elev->currentFloor)--;
+    while (elev->buttons [elev->currentFloor] != IN)
+    {
+        printf("\n");
+        timePass(2);
+        printf("\nPassing floor %d", elev->currentFloor);
+        printf("\n");
+        timePass(2);
+        (elev->currentFloor)--;
+    } // while
+    elev->buttons [elev->currentFloor] = OUT;
+    printf("\n The door is being opend ...");
+    printf("\n");
+    printf("\n **** FLOOR %d **** ",
+           elev->currentFloor);
+    printf("\n");
+    timePass(4);
+
+    return;
+} // moveDown
+
+void anyUpRequest (ELEVATOR* elev) {
+    // This func checks to see if any request is for a floor above the cf.
+    /* 엘리베이터가 현재 층보다 높은 층에 요청이 있는지를 확인하는 함수이다.
+     * 함수의 반환값은 bool 타입으로 true, false를 반환한다.
+     * 매개변수로는 Elevator포인터인 elev가 전달된다.
+     * 함수 내에서 isAny 변수를 선언하고, false로 초기화한다.
+     * (이 변수는 현재 층보다 높은 층에 요청이 있는지를 나타낸다. )
+     *for 루프를 사용해 현재 층부터 가장 높은층 [TOP Floor]까지 반복한다.
+     * 이떄, isAny가 true이거나 가장 높은 층에 도달할때까지 반복한다.
+     * elev->buttons[check] == IN을 통해 해당 층에 버튼이 눌려있는지 여부를 확인하고,
+     * 이 값을 isAny에 대입/ True면 현재 층보다 높은 층에 요청이 있음& false면 아님
+     * */
 }
-void moveDown (ELEVATOR* elev);
+void anyDownRequest (ELEVATOR* elev);
 void timePass (int m);
 void terminate (ELEVATOR* elev);
