@@ -1,12 +1,10 @@
 //
 // Created by adora on 2024-02-14.
 //
-#include <stdio.h>
-#include <stdlib.h>
-#include <ctype.h>
-#include <stdbool.h>
 
-#include "ElevatorHeader.h"
+
+
+#include "ElevatorHeader.h" // 여기서는 헤더를 포함했으니 ㄱㅊ
 #define TOP_FLOOR 10
 #define DELAY_FACTOR 10000
 
@@ -170,7 +168,7 @@ void moveDown (ELEVATOR* elev){
     return;
 } // moveDown
 
-void anyUpRequest (ELEVATOR* elev) {
+bool anyUpRequest (ELEVATOR* elev) {
     // This func checks to see if any request is for a floor above the cf.
     /* 엘리베이터가 현재 층보다 높은 층에 요청이 있는지를 확인하는 함수이다.
      * 함수의 반환값은 bool 타입으로 true, false를 반환한다.
@@ -182,7 +180,37 @@ void anyUpRequest (ELEVATOR* elev) {
      * elev->buttons[check] == IN을 통해 해당 층에 버튼이 눌려있는지 여부를 확인하고,
      * 이 값을 isAny에 대입/ True면 현재 층보다 높은 층에 요청이 있음& false면 아님
      * */
+
+    // Local
+    bool isAny = false;
+
+    // statements
+    for (int check= elev->currentFloor;
+    check <=TOP_FLOOR && !isAny;
+    check++)
+        isAny = (elev->buttons[check] == IN);
+
+    return isAny;
 }
-void anyDownRequest (ELEVATOR* elev);
-void timePass (int m);
-void terminate (ELEVATOR* elev);
+bool anyDownRequest (ELEVATOR* elev)
+{
+    //Local Decl
+    bool isAny = false;
+
+    // Statements
+    for (int check = elev->currentFloor;
+    check >= 0;
+    check--)
+        isAny = isAny || (elev->buttons[check] == IN);
+    return isAny;
+}
+void timePass (int time){
+    // statements
+    for (long  i = 0; i < (time* DELAY_FACTOR); i++);
+    return;
+}
+void terminate (ELEVATOR* elev) {
+    free(elev->buttons);
+    return;
+}
+// end
