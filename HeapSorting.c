@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#define swap (type, x, y) do {type t = x; x = y; y = t;} while (0)
+#define swap(type, x, y) do {type t = x; x = y; y = t;} while (0)
 
 static void downHeap (int a[], int left, int right);
 void heapSort (int a[], int n);
