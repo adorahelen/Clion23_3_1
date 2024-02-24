@@ -33,13 +33,13 @@ static void downHeap (int a[], int left, int right){
     for(parent = left; parent < (right + 1) / 2; parent = child) {
         int cl = parent * 2 + 1; // 왼쪽 자식
         int cr = cl + 1;  // 오른쪽 자식
-        child = ( cr <= right && a[cr] > a[cl] ? cr: cl); // 큰 값을 선택
+        child = ( cr <= right && a[cr] > a[cl]) ? cr: cl; // 큰 값을 선택
         if (temp >= a[child])
             break;
 
         a[parent] = a[child];
     }
-    a[parent] = a[child];
+    a[parent] = temp;
 }
 void heapSort (int a[], int n){
 
