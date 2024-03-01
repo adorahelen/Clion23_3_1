@@ -7,6 +7,7 @@
 #include <stdio.h>
 #include "Member.h"
 #include "BinTree.h"
+#include "MyTree.h"
 
 typedef  enum {
     TERMINATE, ADD, REMOVE, SEARCH, PRINT
@@ -28,7 +29,7 @@ int main (void)
     BinNode *root = NULL;
     do {
         Member x;
-        BinNode *temp;
+        struct __bnode temp;
         switch (menu= SelectMenu()) {
 
             case ADD :
