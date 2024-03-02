@@ -18,4 +18,5 @@ int MemberNameCmp(const Member *x, const Member *y); // 회원이름비교
 void PrintMember(const Member *x); // 회원 데이터를 출력(줄 바꿈 없이)
 void PrintLnMember(const Member *x);
 Member ScanMember(const char *message, int sw);
+
 #endif //CLION23_3_1_MEMBER_H
