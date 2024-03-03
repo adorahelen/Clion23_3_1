@@ -32,7 +32,7 @@ int main (void)
         Member x;
         BinNode *temp;
 
-        switch (menu = SelectMenu ()) {
+        switch (menu = SelectMenu()) {
             // 노드를 삽입* 삭제* 검색* 출력
 
             case ADD :
