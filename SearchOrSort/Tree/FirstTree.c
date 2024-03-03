@@ -19,11 +19,11 @@ static BinNode *AllocBinNode (void)
 }
 
 // 2. 함수: 노드 맴버의 값을 설정
-static void SetBinNode (BinNode *n, const Member *x, const BinNode *left, const BinNode *right)
+static void SetBinNode(BinNode *n, const Member *x, const BinNode *left, const BinNode *right)
 {
-    n->data = *x; // 데이터
-    n->left = left; // 왼쪽 자식 노드에 대한 포인터
-    n->right = right; // 오른쪽 자식 노드에 대한 포인터
+    n->data = *x;
+    n->left = left;
+    n->right = right;
 }
 
  // 3. 검색
@@ -33,13 +33,10 @@ static void SetBinNode (BinNode *n, const Member *x, const BinNode *left, const 
 
      if (p == NULL)
          return NULL; // 검색실패
-
      else if ((cond = MemberNoCmp(x, &p->data)) == 0)
          return p; // 성공
-
      else if (cond < 0)
          Search(p->left, x); // 왼쪽 서브 트리에서 검색
-
      else
          Search(p->right, x); // 오른쪽 서브 트리에서 검색
  }
@@ -62,3 +59,64 @@ static void SetBinNode (BinNode *n, const Member *x, const BinNode *left, const 
         p->right = Add(p->right, x);
      return p;
  }
+
+ // 5. 노드 삭제 함수
+ int Remove(BinNode **root, const Member *x)
+ {
+    BinNode *next, *temp;
+    BinNode **left;
+    BinNode **p = root;
+
+    while(1) {
+        int cond;
+        if (*p == NULL) {
+            printf(" -ERROR - %d is Not Registered YET. \n", x->no);
+            return -1;  // 검색에 실패한 경우
+
+        } else if ((cond = MemberNoCmp(x, &(*p)->data)) ==0)
+            break; // 검색에 바로 성공한 경우
+
+        else if (cond < 0) // 왼쪽 서브 트리에서 검색
+            p = &((*p) ->left);
+        else
+            p = &((*p)->right); // 오른쪽 서브트리에서 검색
+    }
+// **********3번정도 다시 읽어 보기**********
+    if ((*p)->left == NULL)
+        next = (*p)->right;
+    else {
+        left = &((*p)->left);
+        while ((*left)->right !=NULL)
+            left = &(*left)->right;
+        next = *left;
+        *left = (*left)->left;
+        next->left = (*p)->left;
+        next->right = (*p)->right;
+    }
+    temp = *p;
+    *p = next;
+    free(temp);
+
+     return 0;
+ }
+
+ // 6. 출력 함수 (모든 노드의 데이터를 출력)
+ void PrintTree(const BinNode *p)
+ {
+    if (p != NULL) {
+        PrintTree(p->left);
+        PrintLnMember(&p->data);
+        PrintTree(p->right);
+    }
+  }
+
+  // 7. 삭제 함수 (모든 노드의 데이터를 삭제)
+  void FreeTree(BinNode *p)
+  {
+    if (p != NULL) {
+
+        FreeTree(p->left);
+        FreeTree(p->right);
+        free(p);
+    }
+  }
