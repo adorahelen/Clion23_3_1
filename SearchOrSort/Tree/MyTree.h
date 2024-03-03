@@ -16,39 +16,19 @@
 
 #ifndef CLION23_3_1_MYTREE_H
 #define CLION23_3_1_MYTREE_H
+
 #include "Member.h"
 
+// 노드 정의 (데이터 타입 맴버를 담고있는.. 그 맴버는 data라고 명명)
 typedef struct __bnode {
-    Member data; // 데이터
-    struct __bnode *left;
-    struct __bnode *right;
+    Member data; // 데이터이며 "헤더파일"에 정의되어 있는 내용을 데이터로 사용한다.
+    struct __bnode *left; // 이진트리 좌측을 나타냄
+    struct __bnode *right; // 이진트리 우측을 나타낸다.
 } BinNode;
 
-BinNode *Search(BinNode *p, const Member *x);
-BinNode *Add(BinNode *p, const Member *x);
-int Remove (BinNode **root, const Member *x);
-void PrintTree (const BinNode  *p);
-
-void FreeTree (BinNode *p);
+BinNode *Search(BinNode *p, const Member *x); // 검색용 함수
+BinNode *Add(BinNode *p, const Member *x); // 노드 삽입 용 합수
+int Remove (BinNode **root, const Member *x); // 노드 삭제용 함수
+void PrintTree (const BinNode  *p); // 모든 노드 출력 함수
+void FreeTree (BinNode *p); // 모든 노드 삭제 함수
 #endif //CLION23_3_1_MYTREE_H
-
-#include <stdio.h>
-#include <stdlib.h>
-#include "Member.h"
-#include "BinTree.h"
-
-static BinNode *AllocBinNode (void)
-{
-    return calloc(1, sizeof(BinNode));
-}
-
-static void SetBinNode (BinNode *n, const Member *x, const BinNode *left, const BinNode *right)
-{
-n->data = *x;
-n->left = left;
-n->right = right;
-}
-
-
-
-

@@ -4,9 +4,10 @@ project(Clion23_3_1 C)
 set(CMAKE_C_STANDARD 11)
 
 add_executable(Clion23_3_1
-        PilotProject/SortArrayStudent.c
-        PilotProject/Function.c
-        PilotProject/Header.h
+        SearchOrSort/Tree/FirstTree.c
+        SearchOrSort/Tree/MyTree.h
+        SearchOrSort/Tree/Member.h
+        SearchOrSort/Tree/TreeTest.c
 
 
 )
