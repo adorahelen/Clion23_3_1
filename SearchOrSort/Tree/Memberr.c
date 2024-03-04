@@ -20,8 +20,8 @@ void PrintLnMember(const Member *x)
 Member ScanMember(const char *message, int sw)
 {
     Member temp;
-    printf("%s하는 데이터를 입력하세요.\n", message);
-    if (sw & MEMBER_NO)   { printf("번호: ");  scanf("%d", &temp.no);  }
-    if (sw & MEMBER_NAME) { printf("이름: ");  scanf("%s", temp.name); }
+    printf("%s Input the data \n", message);
+    if (sw & MEMBER_NO)   { printf("Number: ");  scanf("%d", &temp.no);  }
+    if (sw & MEMBER_NAME) { printf("Name: ");  scanf("%s", temp.name); }
     return temp;
 }
