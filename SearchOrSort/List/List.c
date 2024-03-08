@@ -78,8 +78,77 @@ void RemoveRear (List *list)
             RemoveFront(list);
 
         else {
+            Node *ptr = list->head;
+            Node *pre;
+            while (ptr->next != NULL) {
+                pre = ptr;
+                ptr = ptr->next;
+            }
+
+            pre->next = NULL;
+            free(ptr);
+            list->crnt = pre;
 
         }
     }
 }
 
+void RemoveCurrent(List *list)
+{
+    if(list->head != NULL) {
+        if(list->crnt == list->head)
+            RemoveFront(list);
+        else{
+            Node *ptr = list->head;
+            while (ptr->next != list->crnt)
+                ptr = ptr->next;
+
+            ptr->next = list->crnt->next;
+            free(list->crnt);
+            list->crnt = ptr;
+
+        }
+    }
+}
+
+
+// 모든 노드를 삭제
+void Clear (List *list)
+{
+    while(list->head != NULL) // 텅 빌 때까지
+        RemoveFront(list); // 머리 노드를 삭제
+        list->crnt = NULL;
+}
+
+void PrintCurrent (const List *list)
+{
+    if (list->crnt == NULL)
+        printf("Is there Nothing...");
+    else
+        PrintMember(&list->crnt->data);
+}
+
+void PrintLnCurrent (const List *list)
+{
+    PrintCurrent(list);
+    putchar('\n');
+}
+
+void Print (const List *list)
+{
+    if (list->head == NULL)
+        puts("No Node,,,");
+    else {
+        Node *ptr = list->head;
+        puts("<<<All Showing!>>>");
+        while(ptr != NULL) {
+            PrintLnMember(&ptr->data);
+            ptr = ptr->next; // 다음 노드를 선택
+        }
+    }
+}
+
+void Terminate (List *list)
+{
+    Clear(list);
+}
