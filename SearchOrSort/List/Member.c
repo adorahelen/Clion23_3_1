@@ -27,7 +27,7 @@ Member ScanMember(const char *message, int sw)
     Member temp;
     printf("%s Input the data ..\n", message);
     if (sw&MEMBER_NO) { printf("Number : "); scanf("%d", &temp.no); }
-    if (sw&MEMBER_NAME) { printf("Name : "); scanf("%d", &temp.name); }
+    if (sw&MEMBER_NAME) { printf("Name : "); scanf("%s", &temp.name); }
     return temp;
 }
 
