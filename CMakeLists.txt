@@ -5,8 +5,8 @@ set(CMAKE_C_STANDARD 11)
 
 add_executable(Clion23_3_1
         SearchOrSort/List/List.c
-        SearchOrSort/List/List.h
-        SearchOrSort/List/Member.h
+        SearchOrSort/List/ListTest.c
+        SearchOrSort/List/Member.c
 
 
 )

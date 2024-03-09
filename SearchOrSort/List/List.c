@@ -14,11 +14,11 @@ static Node *AllocNode(void)
 }
 
 // n이 가리키는 노드의 각 맴버에 값을 설정
-static void SetNode(Node *n, const Member *x,
-                    const Node *next) {
+static void SetNode(Node *n, const Member *x, const Node *next)
+{
 
-    n->data = *x; // 데이터
-    n->next = next;  // 뒤쪽 포인터
+    n->data = *x;
+    n->next = next;
 }
 
 // 연결 리스트를 초기화

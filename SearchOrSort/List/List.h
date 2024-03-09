@@ -28,13 +28,13 @@ typedef struct {
 
 void initialize(List *list); // 연결 리스트 초기화
 
-Node *Search(List *list, const Member *x,
+Node *search(List *list, const Member *x,
              int compare(const Member *x, const Member *y));
 // x와 동일한 노드 검색
 
-void insertFront(List *list, const Member *x);
+void InsertFront(List *list, const Member *x);
 // 머리에 노드를 삽입
-void insertRear(List *list, const Member *x);
+void InsertRear(List *list, const Member *x);
 // 꼬리에 노드를 삽입
 
 
@@ -44,7 +44,7 @@ void RemoveCurrent(List *list); // 선택한 노드 삭제
 void Clear(List *list); //모든 노드 삭제
 
 void PrintCurrent(const List *list); // 하나출력
-void PrintCurrent(const List *list); //하나출력 + ln
+void PrintLnCurrent(const List *list); //하나출력 + ln
 void Print(const List *list); // 모든 노드 출력
 void Terminate(List *list); // 연결리스트 종료
 
